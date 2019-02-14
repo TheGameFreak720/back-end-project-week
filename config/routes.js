@@ -5,7 +5,7 @@ module.exports = server => {
     server.get('/note/get/all', getAllNotes);
     server.post('/note/create', addNote);
     server.put('/note/edit/:id', updateNote);
-    server.delete('note/delete/:id', deleteNote);
+    server.delete('/note/delete/:id', deleteNote);
 }
 
 const addNote = async (req, res) => {

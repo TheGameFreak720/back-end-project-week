@@ -39,6 +39,15 @@ describe('The route handlers', () => {
                 expect(response.body[0]).toBeGreaterThan(0);
                 db('users').truncate();
             });
+
+            it('responds with 401 when body is missing data', async () => {
+                const body = {};
+
+                const response  = await request(server).post('/note/register').send(body);
+
+                expect(response.status).toBe(401);
+                db('users').truncate();
+            });
         });
     });
 

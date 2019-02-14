@@ -24,7 +24,7 @@ describe('The route handlers', () => {
                 const response  = await request(server).post('/note/register').send(body);
 
                 expect(response.status).toBe(201);
-                db('users').truncate()''
+                db('users').truncate();
             });
 
             it('responds with the new user id', async () => {

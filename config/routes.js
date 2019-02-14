@@ -1,13 +1,25 @@
+const jwt = require('jsonwebtoken');
 
+const { authenticate } = require('../auth/authenticate');
 const notesDB = require('../database/helpers/noteDb');
 
 module.exports = server => {
+    server.post('/note/register', register);
+    server.post('/note/login', login);
+
+    server.use(authenticate);
+
     server.get('/note/get/all', getAllNotes);
     server.post('/note/create', addNote);
     server.put('/note/edit/:id', updateNote);
     server.delete('/note/delete/:id', deleteNote);
 }
 
+//Auth functions
+
+
+
+//Managing note funtions
 const addNote = async (req, res) => {
     const note = req.body;
 

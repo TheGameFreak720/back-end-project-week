@@ -9,12 +9,12 @@ module.exports = server => {
     server.post('/note/register', register);
     server.post('/note/login', login);
 
-    server.use(authenticate);
-
     server.get('/note/get/all', getAllNotes);
     server.post('/note/create', addNote);
     server.put('/note/edit/:id', updateNote);
     server.delete('/note/delete/:id', deleteNote);
+
+    server.use(authenticate);
 }
 
 //Auth functions

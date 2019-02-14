@@ -17,7 +17,17 @@ module.exports = server => {
 }
 
 //Auth functions
+const register = async (req, res) => {
+    const user = req.body;
+    user.password = bcrypt.hashSync(user.password, 12);
 
+    if(user.name && user.email && user.password) {
+        const registered = await userDB.add(user);
+        res.status(201).json(registered);
+    } else {
+        res.status(401).json({ message: 'The user is missing data' });
+    }
+};
 
 
 //Managing note funtions

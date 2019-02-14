@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 
 const { authenticate } = require('../auth/authenticate');
 const notesDB = require('../database/helpers/noteDb');
+const userDB = require('../database/helpers/userDb');
 
 module.exports = server => {
     server.post('/note/register', register);

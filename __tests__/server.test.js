@@ -6,7 +6,28 @@ const db = require('../database/dbConfig');
 describe('The route handlers', () => {
 
     describe('Auth routes', () => {
+        describe('Post /note/register', () => {
 
+            afterEach(async () => {
+                await db('users').truncate();
+                await db.seed.run();
+            });
+
+
+            it('responds with 201 if body is correct', async () => {
+                const body = {
+                    name: 'Luis',
+                    email: 'luis@gmail.com',
+                    password: 'password123'
+                };
+
+                const response  = await request(server).post('/note/register').send(body);
+
+                expect(response.status).toBe(201);
+                db('users').truncate()''
+            });
+            
+        });
     });
 
     describe('Managing note routes', () => {
@@ -92,7 +113,7 @@ describe('The route handlers', () => {
             });
         });
 
-        describe('Delete note/delete/:id', () => {
+        describe('Delete /note/delete/:id', () => {
             afterEach(async () => {
                 await db('notes').truncate();
                 await db.seed.run();

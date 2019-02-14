@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 const { authenticate } = require('../auth/authenticate');
 const notesDB = require('../database/helpers/noteDb');

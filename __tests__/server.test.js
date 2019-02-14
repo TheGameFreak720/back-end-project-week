@@ -93,14 +93,14 @@ describe('The route handlers', () => {
         });
 
         it('responds with 200', async () => {
-            const response = await request(server).delete('note/delete/1');
+            const response = await request(server).delete('/note/delete/1');
 
             expect(response.status).toBe(200);
             db('notes').truncate();
         });
 
         it('responds with the number of records removed', async () => {
-            const response = await request(server).delete('note/delete/1');
+            const response = await request(server).delete('/note/delete/1');
 
             expect(response.body).toBe(1);
             db('notes').truncate();
@@ -108,7 +108,7 @@ describe('The route handlers', () => {
 
         it('responds with 404 when params have missing data', async () => {
             const params = undefined;
-            const response = await request(server).delete(`note/delete/${params}`);
+            const response = await request(server).delete(`/note/delete/${params}`);
 
             expect(response.status).toBe(404);
         });

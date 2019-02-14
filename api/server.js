@@ -52,6 +52,14 @@ server.use(session(sess));
 server.use(passport.initialize());
 server.use(passport.session());
 
+passport.serializeUser(function (user, done) {
+    done(null, user);
+});
+  
+  passport.deserializeUser(function (user, done) {
+    done(null, user);
+});
+
 configureRoutes(server);
 
 module.exports = {

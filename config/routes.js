@@ -8,7 +8,7 @@ const userDB = require('../database/helpers/userDb');
 const notesDB = require('../database/helpers/noteDb');
 
 
-
+//server.use(authenticate);
 module.exports = server => {
     server.post('/note/register', register);
     server.post('/note/login', login);
@@ -40,12 +40,12 @@ const login = (req, res) => {
         .then(users => {
             if(users.length && bcrypt.compareSync(user.password, users[0].password)) {
                 const token = jwt.sign({ id: users[0].id }, process.env.JWT_SECRET, {
-                expiresIn: 86400 // expires in 24 hours
+                    expiresIn: 86400 // expires in 24 hours
                 });
                 
                 res.json({ message: 'Logged in', jwt: token });
             } else {
-                res.status(404).json({ message: 'login information is incorrect' });
+                res.status(401).json({ message: 'login information is incorrect' });
             }
         })
         .catch(err => {

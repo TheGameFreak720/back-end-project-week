@@ -3,7 +3,9 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 
-const configureRoutes = require('../config/routes.js');
+const configureAuthRoutes = require('../config/authRoutes');
+const configureNoteRoutes = require('../config/noteRoutes.js');
+
 
 const server = express();
 
@@ -12,7 +14,8 @@ server.use(cors());
 server.use(morgan('dev'));
 server.use(express.json());
 
-configureRoutes(server);
+// configureAuthRoutes(server);
+configureNoteRoutes(server);
 
 module.exports = {
     server,

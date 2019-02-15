@@ -13,7 +13,6 @@ server.use(cors());
 server.use(morgan('dev'));
 server.use(express.json());
 
-
 configureRoutes(server);
 
 module.exports = {

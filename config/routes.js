@@ -7,13 +7,14 @@ const { authenticate } = require('../auth/authenticate');
 const userDB = require('../database/helpers/userDb');
 const notesDB = require('../database/helpers/noteDb');
 
-//server.use(authenticate);
+
 
 module.exports = server => {
     server.post('/note/register', register);
     server.post('/note/login', login);
 
     
+
     server.get('/note/get/all', getAllNotes);
     server.post('/note/create', addNote);
     server.put('/note/edit/:id', updateNote);
@@ -22,9 +23,9 @@ module.exports = server => {
 
 const register = async (req, res) => {
     const user = req.body;
-    user.password = bcrypt.hashSync(user.password, 12);
 
     if(user.name && user.email && user.password) {
+        user.password = bcrypt.hashSync(user.password, 12);
         const registered = await userDB.add(user);
         res.status(201).json(registered);
     } else {

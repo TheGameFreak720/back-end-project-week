@@ -114,7 +114,7 @@ describe('The route handlers', () => {
                 expect(response.status).toBe(200);
                 db('notes').truncate();
             });
-
+            
             it('responds with an object', async () => {
                 const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS', user_id: 3};
                 body.id = 3;

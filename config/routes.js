@@ -7,8 +7,9 @@ const { authenticate } = require('../auth/authenticate');
 const userDB = require('../database/helpers/userDb');
 const notesDB = require('../database/helpers/noteDb');
 
+//server.use(authenticate); add this after login
 
-//server.use(authenticate);
+
 module.exports = server => {
     server.post('/note/register', register);
     server.post('/note/login', login);
@@ -27,6 +28,12 @@ const register = async (req, res) => {
     if(user.name && user.email && user.password) {
         user.password = bcrypt.hashSync(user.password, 12);
         const registered = await userDB.add(user);
+
+        
+        const token = jwt.sign({id: registered}, process.env.JWT_SECRET, {
+            expiresIn: 86400 // expires in 24 hours
+        });
+
         res.status(201).json(registered);
     } else {
         res.status(401).json({ message: 'The user is missing data' });

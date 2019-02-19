@@ -13,7 +13,7 @@ describe('The route handlers', () => {
             });
 
             it('responds with 201 if body is correct', async () => {
-                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS', user_id: 3}
+                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS'}
                 const response = await request(server).post('/note/create').send(body);
 
                 expect(response.status).toBe(201);
@@ -21,7 +21,7 @@ describe('The route handlers', () => {
             });
 
             it('responds with the new note id', async () => {
-                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS', user_id: 3}
+                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS'}
                 const response = await request(server).post('/note/create').send(body);
 
                 expect(response.body[0]).toBeGreaterThan(0);
@@ -58,7 +58,7 @@ describe('The route handlers', () => {
             });
 
             it('responds with 200', async () => {
-                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS', user_id: 3};
+                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS'};
                 body.id = 3;
 
                 const response = await request(server).put('/note/edit/3').send(body);
@@ -68,7 +68,7 @@ describe('The route handlers', () => {
             });
 
             it('responds with an object', async () => {
-                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS', user_id: 3};
+                const body = {title: 'Coding is fun', description: 'Diandra made me do TDD. SOS'};
                 body.id = 3;
 
                 const response = await request(server).put('/note/edit/3').send(body);

@@ -11,7 +11,7 @@ module.exports = server => {
 const addNote = async (req, res) => {
     const note = req.body;
 
-    if(note.title && note.description && note.user_id) {
+    if(note.title && note.description) {
         const posted = await notesDB.add(note);
         res.status(201).json(posted);
     } else {
@@ -33,7 +33,7 @@ const updateNote = async(req, res) => {
     const newNote = req.body;
     newNote.id = id;
 
-    if(newNote.title && newNote.description && newNote.user_id) {
+    if(newNote.title && newNote.description) {
         const updated = await notesDB.update(newNote.id, newNote);
         res.json(updated);
     } else {

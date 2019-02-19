@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('title').notNullable();
     table.string('description', 500);
+    table.timestamp('created_at').defaultTo(knex.fn.now());
   });
 };
 

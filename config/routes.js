@@ -2,6 +2,7 @@ const notesDB = require('../database/helpers/noteDb');
 
 
 module.exports = server => {
+    server.get('/', greetings);
     server.get('/note/get/all', getAllNotes);
     server.post('/note/create', addNote);
     server.put('/note/edit/:id', updateNote);
@@ -18,6 +19,17 @@ const addNote = async (req, res) => {
         res.status(401).json({ message: 'The note is missing data' })
     }
 };
+
+const greetings = (req, res) => {
+    res.send(console.log(
+        '\n' +
+        '         ("`-’-/").___..--’’"`-._\n' +
+        '          `6_ 6  )   `-.  (     ).`-.__.‘)\n' +
+        '          (_Y_.)’  ._   )  `._ `. ``-..-’\n' +
+        '        _..`--’_..-_/  /--’_.’ ,’\n' +
+        '      (il),-’‘  (li),’  ((!.-‘\n' 
+        ))
+}
 
 const getAllNotes = async (req, res) => {
     try {

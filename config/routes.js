@@ -21,14 +21,14 @@ const addNote = async (req, res) => {
 };
 
 const greetings = (req, res) => {
-    res.send(console.log(
+    res.send(
         '\n' +
         '         ("`-’-/").___..--’’"`-._\n' +
         '          `6_ 6  )   `-.  (     ).`-.__.‘)\n' +
         '          (_Y_.)’  ._   )  `._ `. ``-..-’\n' +
         '        _..`--’_..-_/  /--’_.’ ,’\n' +
         '      (il),-’‘  (li),’  ((!.-‘\n' 
-        ))
+        )
 }
 
 const getAllNotes = async (req, res) => {

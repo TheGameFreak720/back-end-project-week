@@ -21,14 +21,7 @@ const addNote = async (req, res) => {
 };
 
 const greetings = (req, res) => {
-    res.send(
-        '\n' +
-        '         ("`-’-/").___..--’’"`-._\n' +
-        '          `6_ 6  )   `-.  (     ).`-.__.‘)\n' +
-        '          (_Y_.)’  ._   )  `._ `. ``-..-’\n' +
-        '        _..`--’_..-_/  /--’_.’ ,’\n' +
-        '      (il),-’‘  (li),’  ((!.-‘\n' 
-        )
+    res.send('Hello stranger. Welcome to my backend project week assignment :D');
 }
 
 const getAllNotes = async (req, res) => {
